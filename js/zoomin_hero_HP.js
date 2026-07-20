@@ -1,9 +1,9 @@
 const slides = document.querySelectorAll(".hero-bg");
 
 const images = [
-    "images/image4.jpg",
-    "images/image2.jpg",
-    "images/image3.jpg"
+    "images/image4.webp",
+    "images/image2.webp",
+    "images/image3.webp"
 ];
 
 let currentImage = 0;
