@@ -21,31 +21,51 @@ window.addEventListener("scroll", () => {
 const burger = document.getElementById("burgerBtn");
 const navLinks = document.getElementById("navLinks");
 
+function closeMenu() {
+  if (!burger || !navLinks) return;
+
+  burger.classList.remove("active");
+  navLinks.classList.remove("active");
+
+  const links = navLinks.querySelectorAll("a");
+  links.forEach(link => {
+    link.style.animation = "";
+  });
+}
+
+function toggleMenu() {
+  if (!burger || !navLinks) return;
+
+  const isOpen = navLinks.classList.contains("active");
+
+  if (isOpen) {
+    closeMenu();
+    return;
+  }
+
+  burger.classList.add("active");
+  navLinks.classList.add("active");
+
+  const links = navLinks.querySelectorAll("a");
+
+  links.forEach((link, index) => {
+    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.15}s`;
+  });
+}
+
 if (burger && navLinks) {
 
-  burger.addEventListener("click", () => {
+  burger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  });
 
-    burger.classList.toggle("active");
-    navLinks.classList.toggle("active");
+  document.addEventListener("click", (event) => {
+    const clickedInsideNav = navLinks.contains(event.target) || burger.contains(event.target);
 
-    // animate links one by one
-    const links = navLinks.querySelectorAll("a");
-
-    links.forEach((link, index) => {
-
-      if (link.style.animation) {
-
-        link.style.animation = "";
-
-      } else {
-
-        link.style.animation =
-          `navLinkFade 0.5s ease forwards ${index / 7 + 0.15}s`;
-
-      }
-
-    });
-
+    if (!clickedInsideNav && navLinks.classList.contains("active")) {
+      closeMenu();
+    }
   });
 
 }

@@ -30,7 +30,7 @@ function applyTranslations() {
         const key = el.dataset.i18n;
 
         if (translations[key] !== undefined) {
-            el.textContent = translations[key];
+            el.innerHTML = translations[key];
         } else {
             console.warn(`Missing translation key: ${key}`);
         }
@@ -54,5 +54,7 @@ function setLang(lang) {
 // INIT
 // --------------------
 document.addEventListener("DOMContentLoaded", () => {
+    localStorage.setItem("lang", "pl");
+    currentLang = "pl";
     loadLanguage(currentLang);
 });
