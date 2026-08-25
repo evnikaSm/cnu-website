@@ -4,15 +4,27 @@
 
 const mainNav = document.getElementById("mainNav");
 
-window.addEventListener("scroll", () => {
+if (mainNav) {
+  let lastScrollY = window.scrollY;
 
-  if (window.scrollY > 40) {
-    mainNav.classList.add("scrolled");
-  } else {
-    mainNav.classList.remove("scrolled");
-  }
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
 
-});
+    if (currentScrollY > 40) {
+      mainNav.classList.add("scrolled");
+    } else {
+      mainNav.classList.remove("scrolled");
+    }
+
+    if (currentScrollY > lastScrollY && currentScrollY > 60) {
+      mainNav.classList.add("hidden");
+    } else {
+      mainNav.classList.remove("hidden");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+}
 
 // =========================
 // BURGER MENU

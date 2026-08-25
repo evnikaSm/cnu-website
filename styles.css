@@ -182,7 +182,16 @@ a:hover {
   align-items: center;
   padding: 15px 20px;
   z-index: 10;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   /*controls what appears on top of what on your page*/
+}
+
+#mainNav.hidden {
+  transform: translateY(-100%);
+}
+
+#mainNav.scrolled {
+  box-shadow: 0 8px 24px rgba(8, 26, 44, 0.18);
 }
 
 .nav-right {
@@ -217,6 +226,10 @@ a:hover {
   color: white;
   font-weight: 600;
   cursor: pointer;
+}
+
+.lang-switcher button.active-lang {
+  color: #3ea1ff;
 }
 
 .lang-switcher button:hover {
