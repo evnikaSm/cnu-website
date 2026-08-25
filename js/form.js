@@ -27,6 +27,21 @@ const contactInput = document.getElementById("contactInput");
 const contactLabel = document.getElementById("contactLabel");
 
 const meeting = document.getElementById("meeting");
+const submitBtn = document.getElementById("submitBtn");
+const statusEl = document.getElementById("status");
+
+function setLoading(isLoading) {
+    if (!submitBtn) return;
+
+    submitBtn.disabled = isLoading;
+    submitBtn.textContent = isLoading ? "Wysyłanie..." : "Wyślij";
+    submitBtn.classList.toggle("is-loading", isLoading);
+
+    if (statusEl) {
+        statusEl.textContent = isLoading ? "Wysyłanie formularza..." : statusEl.textContent;
+        statusEl.classList.toggle("loading", isLoading);
+    }
+}
 
 // =====================
 // HELPERS
@@ -168,13 +183,15 @@ meeting.addEventListener("blur", function () {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    if (submitBtn.disabled) return;
+
     // check state
     if (Object.values(state).includes(false)) {
-        document.getElementById("status").textContent =
-            "Uzupełnij wszystkie pola";
-
+        statusEl.textContent = "Uzupełnij wszystkie pola";
         return;
     }
+
+    setLoading(true);
 
     const hobbies = Array.from(
         document.querySelectorAll('input[type="checkbox"]:checked')
