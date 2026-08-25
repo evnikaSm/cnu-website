@@ -29,16 +29,22 @@ const contactLabel = document.getElementById("contactLabel");
 const meeting = document.getElementById("meeting");
 const submitBtn = document.getElementById("submitBtn");
 const statusEl = document.getElementById("status");
+const formLoader = document.getElementById("formLoader");
 
 function setLoading(isLoading) {
     if (!submitBtn) return;
 
     submitBtn.disabled = isLoading;
-    submitBtn.textContent = isLoading ? "Wysyłanie..." : "Wyślij";
+    submitBtn.textContent = isLoading ? (translations.sending || "Sending...") : (translations.submit || "Submit");
     submitBtn.classList.toggle("is-loading", isLoading);
 
+    if (formLoader) {
+        formLoader.hidden = !isLoading;
+        formLoader.classList.toggle("visible", isLoading);
+    }
+
     if (statusEl) {
-        statusEl.textContent = isLoading ? "Wysyłanie formularza..." : statusEl.textContent;
+        statusEl.textContent = isLoading ? (translations["sending-form"] || "Sending form...") : statusEl.textContent;
         statusEl.classList.toggle("loading", isLoading);
     }
 }
@@ -223,7 +229,7 @@ form.addEventListener("submit", async (e) => {
         const result = await response.json();
 
         if (result.success) {
-            document.getElementById("status").textContent = "Wysłano";
+            document.getElementById("status").textContent = translations.sent || "Sent";
             form.reset();
         } else {
             document.getElementById("status").textContent = result.message;
@@ -231,5 +237,7 @@ form.addEventListener("submit", async (e) => {
 
     } catch (err) {
         document.getElementById("status").textContent = "Błąd połączenia";
+    } finally {
+        setLoading(false);
     }
 });
