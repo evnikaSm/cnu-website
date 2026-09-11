@@ -14,6 +14,7 @@ async function loadLanguage(lang) {
         currentLang = lang;
 
         localStorage.setItem("lang", lang);
+        document.documentElement.lang = lang;
 
         applyTranslations();
 
@@ -54,7 +55,5 @@ function setLang(lang) {
 // INIT
 // --------------------
 document.addEventListener("DOMContentLoaded", () => {
-    localStorage.setItem("lang", "pl");
-    currentLang = "pl";
     loadLanguage(currentLang);
 });
