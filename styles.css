@@ -181,7 +181,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  z-index: 10;
+  z-index: 2000;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   /*controls what appears on top of what on your page*/
 }
@@ -1786,6 +1786,10 @@ textarea {
 
   overflow-x: auto;
 
+  touch-action: pan-x;
+
+  overscroll-behavior-x: contain;
+
   scroll-behavior: smooth;
 
   scrollbar-width: none;
@@ -1866,9 +1870,7 @@ textarea {
 
   border-radius: 50%;
 
-  background:
-    rgba(14, 58, 90, 0.9);
-
+  background: transparent;
   color: white;
 
   font-size: 1.4rem;
@@ -1880,15 +1882,6 @@ textarea {
   transition:
     transform 0.25s ease,
     background 0.25s ease;
-}
-
-.carousel-btn:hover {
-
-  background:
-    #f47c2c;
-
-  transform:
-    translateY(-50%) scale(1.08);
 }
 
 .prev-btn {
@@ -1906,11 +1899,6 @@ textarea {
   .event-slide {
 
     min-width: 85%;
-  }
-
-  .carousel-btn {
-    background: transparent;
-    color: #081b2d;
   }
 }
 
@@ -2366,9 +2354,7 @@ textarea {
 }
 
 .modern-timeline-wrapper .carousel-btn {
-
   top: 75px;
-  color: #0e3554;
 }
 
 .modern-timeline-wrapper .prev-btn {
@@ -2382,6 +2368,12 @@ textarea {
 .modern-timeline-scroll {
 
   overflow-x: auto;
+
+  touch-action: pan-x;
+
+  overscroll-behavior-x: contain;
+
+  scroll-behavior: smooth;
 
   scrollbar-width: none;
 }

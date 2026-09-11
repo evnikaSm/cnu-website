@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 
 });
 const timeline =
-    document.getElementById("modernTimeline");
+    document.querySelector(".modern-timeline-scroll");
 
 document
     .getElementById("timelineNext")
