@@ -16,13 +16,6 @@ a:hover {
   color: rgb(0, 170, 255);
 }
 
-/* NAVBAR */
-
-
-/* =========================
-   NAV SCROLL EFFECT
-========================= */
-
 #mainNav {
   z-index: 2000;
   transition:

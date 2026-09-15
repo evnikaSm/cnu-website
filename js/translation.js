@@ -1,9 +1,7 @@
 let translations = {};
 let currentLang = localStorage.getItem("lang") || "pl";
 
-// --------------------
-// LOAD LANGUAGE FILE
-// --------------------
+
 async function loadLanguage(lang) {
     try {
         const res = await fetch(`lang/${lang}.json`);
@@ -23,9 +21,6 @@ async function loadLanguage(lang) {
     }
 }
 
-// --------------------
-// APPLY TRANSLATIONS
-// --------------------
 function applyTranslations() {
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.dataset.i18n;
@@ -43,17 +38,12 @@ function applyTranslations() {
     });
 }
 
-// --------------------
-// PUBLIC FUNCTION
-// --------------------
+
 function setLang(lang) {
     if (lang === currentLang) return; // avoid reload spam
     loadLanguage(lang);
 }
 
-// --------------------
-// INIT
-// --------------------
 document.addEventListener("DOMContentLoaded", () => {
     loadLanguage(currentLang);
 });

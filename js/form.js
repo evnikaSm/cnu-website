@@ -1,6 +1,3 @@
-// =====================
-// STATE
-// =====================
 const state = {
     firstName: false,
     lastName: false,
@@ -8,65 +5,45 @@ const state = {
     gender: false,
     meeting: false
 };
-
 function setValid(key, value) {
     state[key] = value;
 }
-
-// =====================
-// ELEMENTS
-// =====================
 const form = document.getElementById("form");
-
 const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
 const university = document.getElementById("university");
-
 const contactType = document.getElementById("contactType");
 const contactInput = document.getElementById("contactInput");
 const contactLabel = document.getElementById("contactLabel");
-
 const meeting = document.getElementById("meeting");
 const submitBtn = document.getElementById("submitBtn");
 const statusEl = document.getElementById("status");
 const formLoader = document.getElementById("formLoader");
-
 function setLoading(isLoading) {
     if (!submitBtn) return;
-
     submitBtn.disabled = isLoading;
     submitBtn.textContent = isLoading ? (translations.sending || "Sending...") : (translations.submit || "Submit");
     submitBtn.classList.toggle("is-loading", isLoading);
-
     if (formLoader) {
         formLoader.hidden = !isLoading;
         formLoader.classList.toggle("visible", isLoading);
     }
-
     if (statusEl) {
         statusEl.textContent = isLoading ? (translations["sending-form"] || "Sending form...") : statusEl.textContent;
         statusEl.classList.toggle("loading", isLoading);
     }
 }
-
-// =====================
-// HELPERS
-// =====================
 function showError(input, errorEl, message) {
     errorEl.textContent = message;
     input.classList.add("input-error");
     input.classList.remove("input-valid");
 }
-
 function clearError(input, errorEl) {
     errorEl.textContent = "";
     input.classList.remove("input-error");
     input.classList.add("input-valid");
 }
 
-// =====================
-// CONTACT FORMAT (PHONE)
-// =====================
 contactInput.addEventListener("input", function () {
     if (contactType.value !== "phone") return;
 
@@ -85,10 +62,6 @@ contactInput.addEventListener("input", function () {
 
     this.value = value;
 });
-
-// =====================
-// CONTACT TYPE CHANGE
-// =====================
 contactType.addEventListener("change", function () {
     if (this.value === "phone") {
         contactLabel.textContent = "NUMER TELEFONU";
@@ -108,12 +81,6 @@ contactType.addEventListener("change", function () {
         contactInput.type = "text";
     }
 });
-
-// =====================
-// LIVE VALIDATION
-// =====================
-
-// FIRST NAME
 firstName.addEventListener("blur", function () {
     const el = document.getElementById("firstNameError");
 
@@ -126,7 +93,6 @@ firstName.addEventListener("blur", function () {
     }
 });
 
-// LAST NAME
 lastName.addEventListener("blur", function () {
     const el = document.getElementById("lastNameError");
 
@@ -139,7 +105,6 @@ lastName.addEventListener("blur", function () {
     }
 });
 
-// CONTACT
 contactInput.addEventListener("blur", function () {
     const el = document.getElementById("contactError");
 
@@ -162,7 +127,6 @@ contactInput.addEventListener("blur", function () {
     setValid("contact", ok);
 });
 
-// GENDER
 document.querySelectorAll('input[name="gender"]').forEach(radio => {
     radio.addEventListener("change", () => {
         document.getElementById("genderError").textContent = "";
@@ -170,7 +134,6 @@ document.querySelectorAll('input[name="gender"]').forEach(radio => {
     });
 });
 
-// MEETING
 meeting.addEventListener("blur", function () {
     const el = document.getElementById("meetingError");
 
@@ -183,15 +146,12 @@ meeting.addEventListener("blur", function () {
     }
 });
 
-// =====================
-// SUBMIT
-// =====================
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (submitBtn.disabled) return;
 
-    // check state
     if (Object.values(state).includes(false)) {
         statusEl.textContent = "Uzupełnij wszystkie pola";
         return;
@@ -225,16 +185,13 @@ form.addEventListener("submit", async (e) => {
                 body: JSON.stringify(data)
             }
         );
-
         const result = await response.json();
-
         if (result.success) {
             document.getElementById("status").textContent = translations.sent || "Sent";
             form.reset();
         } else {
             document.getElementById("status").textContent = result.message;
         }
-
     } catch (err) {
         document.getElementById("status").textContent = "Błąd połączenia";
     } finally {
