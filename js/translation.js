@@ -18,6 +18,7 @@ async function loadLanguage(lang) {
 
     } catch (err) {
         console.error("Language load error:", err);
+        if (lang !== "pl") { loadLanguage("pl"); }
     }
 }
 
@@ -45,5 +46,6 @@ function setLang(lang) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadLanguage(currentLang);
+    const savedLang = localStorage.getItem("lang") || "pl";
+    loadLanguage(savedLang);
 });
