@@ -33,6 +33,9 @@ function applyTranslations() {
         }
     });
 
+    if (typeof renderVerse === "function") renderVerse();
+    if (typeof renderEvents === "function") renderEvents();
+
     // active language button
     document.querySelectorAll("[data-lang]").forEach(btn => {
         btn.classList.toggle("active-lang", btn.dataset.lang === currentLang);

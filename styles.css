@@ -1148,75 +1148,8 @@ textarea {
   font-weight: bold;
 }
 
-.verse-section {
-  padding: 80px 20px;
 
-  background:
-    linear-gradient(180deg,
-      #ffe6d1 0%,
-      #eaf0ff 100%);
 
-  display: flex;
-  justify-content: center;
-}
-
-.verse-text {
-  position: relative;
-
-  max-width: 680px;
-
-  margin: 0;
-
-  text-align: center;
-}
-
-.verse-text p {
-  margin: 0;
-
-  font-family: 'Lora', serif;
-
-  font-size: 1.28rem;
-  line-height: 1.95;
-
-  font-style: italic;
-  font-weight: 400;
-
-  color: #0e3a5a;
-
-  letter-spacing: 0.2px;
-}
-
-.verse-text strong {
-  color: #f47c2c;
-  font-weight: 1000;
-}
-
-.quote {
-  position: absolute;
-  font-size: 5rem;
-  line-height: 1;
-  color: rgba(244, 124, 44, 0.12);
-  font-family: serif;
-  pointer-events: none;
-}
-
-.quote-open {
-  top: -25px;
-  left: -10px;
-}
-
-.quote-close {
-  bottom: -55px;
-  right: -10px;
-}
-
-.verse-text footer {
-  margin-top: 28px;
-  font-size: 0.62rem;
-  letter-spacing: 4px;
-  color: #8a8a8a;
-  text-transform: uppercase;
-}
 
 .verse-quote-about-us {
   font-size: 0.72rem;
@@ -1225,30 +1158,7 @@ textarea {
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
 
-  .verse-text {
-    max-width: 92%;
-  }
-
-  .verse-text p {
-    font-size: 1.12rem;
-    line-height: 1.6;
-  }
-
-  .quote {
-    font-size: 3.5rem;
-  }
-
-  .quote-open {
-    left: 0;
-  }
-
-  .quote-close {
-    right: 0;
-    bottom: -35px;
-  }
-}
 
 .about-us-containers {
   background:
@@ -2597,4 +2507,227 @@ special event page
   font-size: 18px;
   line-height: 1.5;
   max-width: 100%;
+}
+
+#verseMain,
+#verseReference {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.verse-text.swipe-out #verseMain,
+.verse-text.swipe-out #verseReference {
+  transform: translateX(-80px);
+  opacity: 0;
+}
+
+.verse-text.swipe-in #verseMain,
+.verse-text.swipe-in #verseReference {
+  transform: translateX(80px);
+  opacity: 0;
+}
+
+/* =========================
+   VERSE SLIDER
+========================= */
+
+.verse-section {
+  padding: 80px 20px;
+  background: linear-gradient(180deg,
+      #ffe6d1 0%,
+      #eaf0ff 100%);
+
+  display: flex;
+  justify-content: center;
+}
+
+.verse-text {
+  position: relative;
+
+  width: 100%;
+  max-width: 680px;
+
+  /* ОДИНАКОВАЯ ВЫСОТА БЛОКА */
+  min-height: 300px;
+
+  margin: 0;
+  padding: 55px;
+
+  text-align: center;
+
+  /* Не обрезаем кавычки */
+  overflow: visible;
+}
+
+.verse-text p {
+  margin: 0;
+
+  font-family: 'Lora', serif;
+  font-size: 1.28rem;
+  line-height: 1.95;
+  font-style: italic;
+  font-weight: 400;
+
+  color: #0e3a5a;
+  letter-spacing: 0.2px;
+}
+
+.verse-text strong {
+  color: #f47c2c;
+  font-weight: 1000;
+}
+
+/* КАВЫЧКИ */
+
+.quote {
+  position: absolute;
+
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 1;
+
+  color: rgba(244, 124, 44, 0.25);
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.quote-open {
+  top: 0;
+  left: 5px;
+}
+
+.quote-close {
+  right: 5px;
+  bottom: 35px;
+}
+
+.verse-text footer {
+  margin-top: 28px;
+
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+
+  color: #8a8a8a;
+  text-transform: uppercase;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .verse-section {
+    padding: 45px 15px;
+  }
+
+  .verse-text {
+    max-width: 100%;
+
+    /* тоже фиксированная высота */
+    min-height: 330px;
+
+    padding: 50px 35px 65px;
+  }
+
+  .verse-text p {
+    font-size: 1.12rem;
+    line-height: 1.6;
+  }
+
+  .quote {
+    font-size: 3.5rem;
+  }
+
+  .quote-open {
+    top: 5px;
+    left: 0;
+  }
+
+  .quote-close {
+    right: 0;
+    bottom: 30px;
+  }
+
+  .verse-text footer {
+    margin-top: 22px;
+    font-size: 0.55rem;
+    letter-spacing: 2.5px;
+  }
+}
+
+.verse-text {
+  transition: transform 0.9s ease, opacity 0.9s ease;
+}
+
+.verse-text.verse-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.verse-text.verse-out {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+#verseMain,
+#verseReference {
+  display: block;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Уезжает вправо */
+.verse-text.slide-out #verseMain,
+.verse-text.slide-out #verseReference {
+  transform: translateX(80px);
+  opacity: 0;
+}
+
+/* Стартовая позиция нового текста — слева, без анимации */
+.verse-text.slide-in-instant #verseMain,
+.verse-text.slide-in-instant #verseReference {
+  transition: none;
+  transform: translateX(-80px);
+  opacity: 0;
+}
+
+.verse-text {
+  position: relative;
+
+  width: 100%;
+  max-width: 680px;
+
+  /* ОДИНАКОВАЯ ВЫСОТА БЛОКА */
+  min-height: 300px;
+
+  margin: 0;
+  padding: 55px;
+
+  text-align: center;
+
+  /* Не обрезаем кавычки */
+  overflow: visible;
+
+  /* ДОБАВЛЯЕМ ЦЕНТРИРОВАНИЕ ПО ВЕРТИКАЛИ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .verse-text {
+    max-width: 100%;
+    min-height: 330px;
+    padding: 50px 35px 65px;
+
+    /* тоже добавляем */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* остальное без изменений */
 }

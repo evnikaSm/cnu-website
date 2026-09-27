@@ -12,6 +12,64 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<script>
+  const verseKeys = [
+    "verse-main-2-timothy-2-22",
+    "verse-john-4-24",
+    "verse-john-7-37",
+    "verse-john-7-38",
+    "verse-romans-10-13",
+    "verse-1-corinthians-6-17",
+    "verse-1-corinthians-3-16",
+    "verse-2-corinthians-3-18"
+  ];
+  let currentVerse = 0;
+
+  function changeVerse() {
+    const verseText = document.getElementById("verseMain");
+    const verseReference = document.getElementById("verseReference");
+    const verseContainer = document.querySelector(".verse-text");
+
+    if (!verseText || !verseReference || !verseContainer) return;
+
+    // 1. Уводим текущий текст вправо
+    verseContainer.classList.add("slide-out");
+
+    setTimeout(() => {
+      currentVerse = (currentVerse + 1) % verseKeys.length;
+
+      // 2. Меняем текст, пока он невидим
+      renderVerse();
+
+      // 3. Мгновенно ставим текст слева (без анимации)
+      verseContainer.classList.remove("slide-out");
+      verseContainer.classList.add("slide-in-instant");
+
+      // 4. Форсируем reflow, чтобы браузер зафиксировал позицию слева
+      void verseText.offsetWidth;
+
+      // 5. Убираем "мгновенный" класс — сработает transition и текст заедет на место
+      verseContainer.classList.remove("slide-in-instant");
+
+      // 6. Ждём, пока стих полежит на экране, потом повторяем
+      setTimeout(changeVerse, 8000);
+
+    }, 600); // должно совпадать с длительностью transition в CSS
+  }
+
+  function renderVerse() {
+    if (typeof translations === "undefined") return;
+    const key = verseKeys[currentVerse];
+    const text = translations[key];
+    const reference = translations[`${key}-reference`];
+    if (text) document.getElementById("verseMain").innerHTML = text;
+    if (reference) document.getElementById("verseReference").textContent = reference;
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(changeVerse, 8000);
+  });
+</script>
+
 <body>
   <nav id="mainNav">
     <div class="nav-left">
@@ -73,17 +131,14 @@
   <section class="verse-section">
     <blockquote class="verse-text">
       <span class="quote quote-open">“</span>
-      <p data-i18n="verse-main">
-        Uciekaj zaś przed młodzieńczymi pożądaniami,
-        a dąż do <strong>sprawiedliwości</strong>,
-        <strong>wiary</strong>,
-        <strong>miłości</strong> i
-        <strong>pokoju</strong> —
-        wraz <strong>z tymi</strong>, którzy <b>wzywają imienia Pana
-          z czystego serca.</b>
+
+      <p id="verseMain">
+        Uciekaj zaś przed młodzieńczymi pożądaniami, a dąż do sprawiedliwości, wiary, miłości i pokoju — wraz z tymi,
+        którzy wzywają imienia Pana z czystego serca.
       </p>
+
       <span class="quote quote-close">”</span>
-      <footer data-i18n="verse-reference">
+      <footer id="verseReference">
         2 Tymoteusza 2:22
       </footer>
     </blockquote>
@@ -284,90 +339,6 @@
 
       <!-- CAROUSEL -->
       <div class="events-carousel" id="eventsCarousel">
-
-        <!-- CARD -->
-        <div class="meeting-card event-slide">
-          <div class="meeting-title" data-i18n="event-sggw-title">
-            Studiowanie Biblii SGGW
-          </div>
-          <p data-i18n="event-sggw-description">
-            Wspólne czytanie i studiowanie Biblii
-          </p>
-          <div class="event-info">
-            <span data-i18n="event-sggw-location">📍 SGGW - Biblioteka Główna</span>
-            <span data-i18n="event-sggw-time">⏰ Poniedziałek · 16:00</span>
-          </div>
-          <div class="center">
-            <button onclick="location.href='formularz.html'" class="cta-btn" data-i18n="form-button">
-              Formularz
-            </button>
-          </div>
-        </div>
-        <!-- CARD -->
-        <div class="meeting-card event-slide">
-
-          <div class="meeting-title" data-i18n="event-uw-title">
-            Studiowanie Biblii UW
-          </div>
-
-          <p data-i18n="event-uw-description">
-            Wspólne czytanie i studiowanie Biblii
-          </p>
-
-          <div class="event-info">
-            <span data-i18n="event-uw-location">📍 UW - ul.Dobra 55 (WLS)</span>
-            <span data-i18n="event-uw-time">⏰ Środa · 13:00</span>
-          </div>
-
-          <div class="center">
-            <button onclick="location.href='formularz.html'" class="cta-btn" data-i18n="form-button">
-              Formularz
-            </button>
-          </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div class="meeting-card event-slide">
-
-          <div class="meeting-title" data-i18n="event-student-title">
-            Spotkanie studenckie
-          </div>
-          <p data-i18n="event-student-description">
-            Spotykamy się w każdy wtorek
-          </p>
-          <div class="event-info">
-            <span data-i18n="event-student-location">📍 Obok SGGW</span>
-            <span data-i18n="event-student-time">⏰ Wtorek · 18:00</span>
-          </div>
-
-          <div class="center">
-            <button onclick="location.href='formularz.html'" class="cta-btn" data-i18n="form-button">
-              Formularz
-            </button>
-          </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div class="meeting-card event-slide">
-
-          <div class="meeting-title" data-i18n="event-home-title">
-            Spotkanie domowe
-          </div>
-          <p data-i18n="event-home-description">
-            Wpadaj na grupę domową
-          </p>
-          <div class="event-info">
-            <span data-i18n="event-home-location">📍 Ursynów, Wilanowska, ...</span>
-            <span data-i18n="event-home-time">⏰ Czwartek/Piątek · 18:00/19:00</span>
-          </div>
-          <div class="center">
-            <button onclick="location.href='formularz.html'" class="cta-btn" data-i18n="form-button">
-              Formularz
-            </button>
-          </div>
-        </div>
       </div>
       <!-- RIGHT -->
       <button class="carousel-btn next-btn">
@@ -434,6 +405,7 @@
 
   <script src="js/script.js"></script>
   <script src="js/translation.js"></script>
+  <script src="js/events.js"></script>
   <script src="js/carousel.js"></script>
   <script src="js/zoomin_hero_HP.js"></script>
 </body>
