@@ -23,6 +23,7 @@
   },
   {
     "id": "meeting-2",
+    "showSignup": false,
     "day": "monday",
     "time": "16:00",
     "date": {
@@ -41,6 +42,7 @@
   },
   {
     "id": "meeting-3",
+    "showSignup": false,
     "day": "tuesday",
     "time": "16:00",
     "date": {

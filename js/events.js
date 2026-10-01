@@ -119,6 +119,8 @@ function renderEvents() {
             const timeText = document.createElement("span");
             timeText.textContent = `⏰ ${dayName}${displayDate ? ` · ${displayDate}` : ""} · ${event.time}`;
             info.append(locationText, timeText);
+            card.append(info);
+            if (event.showSignup !== false) {
             const center = document.createElement("div");
             center.className = "center";
             const signup = document.createElement("button");
@@ -126,7 +128,8 @@ function renderEvents() {
             signup.textContent = translations["form-button"] || (lang === "en" ? "Sign up" : "Zapisz się");
             signup.addEventListener("click", () => { window.location.href = "formularz.html"; });
             center.append(signup);
-            card.append(info, center);
+            card.append(center);
+            }
             homeCarousel.append(card);
         }
     });
