@@ -2770,3 +2770,13 @@ special event page
   outline: 2px solid #0e3a5a;
   outline-offset: 8px;
 }
+
+@media (min-width: 769px) {
+  .university-registration p {
+    font-size: clamp(21px, 2vw, 24px);
+  }
+
+  .university-registration-logo {
+    width: min(230px, 100%);
+  }
+}
