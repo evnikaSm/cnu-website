@@ -2731,3 +2731,42 @@ special event page
 
   /* остальное без изменений */
 }
+/* The registration section supplies the spacing above contacts. */
+.event-page-section:has(> .university-registration),
+.form-section:has(> .university-registration) {
+  padding-bottom: 0;
+}
+
+/* University registration before contacts, sharing the page content background. */
+.university-registration {
+  background: transparent;
+  color: #0e3a5a;
+  padding: clamp(8px, 1.2vw, 14px) 20px;
+  text-align: center;
+}
+
+.university-registration p {
+  max-width: 640px;
+  margin: 0 auto 8px;
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.university-registration-logo {
+  display: block;
+  width: min(140px, 100%);
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.university-registration-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.university-registration-logo:focus-visible {
+  outline: 2px solid #0e3a5a;
+  outline-offset: 8px;
+}
