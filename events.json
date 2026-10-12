@@ -1,62 +1,7 @@
 [
   {
-    "id": "meeting-2",
-    "showSignup": false,
-    "day": "monday",
-    "time": "16:00",
-    "date": {
-      "pl": "5.10",
-      "en": "5.10"
-    },
-    "title": {
-      "pl": "Ultimate Frisbee",
-      "en": "Ultimate Frisbee"
-    },
-    "location": {
-      "pl": "SGGW, Pole przy akademikach",
-      "en": "SGGW, Field near dorms"
-    },
-    "mapUrl": "https://maps.app.goo.gl/QhEdCTKJwVQkDUfu6"
-  },
-  {
-    "id": "meeting-3",
-    "showSignup": false,
-    "day": "tuesday",
-    "time": "16:00",
-    "date": {
-      "pl": "6.10",
-      "en": "6.10"
-    },
-    "title": {
-      "pl": "Gra w Palanta",
-      "en": "Palant Game"
-    },
-    "location": {
-      "pl": "SGGW, Pole przy akademikach",
-      "en": "SGGW, Field near dorms"
-    },
-    "mapUrl": "https://maps.app.goo.gl/QhEdCTKJwVQkDUfu6"
-  },
-  {
-    "id": "meeting-4",
-    "day": "thursday",
-    "time": "18:00",
-    "date": {
-      "pl": "8.10",
-      "en": "8.10"
-    },
-    "title": {
-      "pl": "Pizza Connect",
-      "en": "Pizza Connect"
-    },
-    "location": {
-      "pl": "SGGW, Ikar",
-      "en": "SGGW, Ikar"
-    },
-    "mapUrl": "https://maps.app.goo.gl/HBtrAjqi7YrXmMb1A"
-  },
-  {
     "id": "meeting-5",
+    "special": true,
     "day": "thursday",
     "time": "18:00",
     "date": {
@@ -72,5 +17,24 @@
       "en": "SGGW, Ikar"
     },
     "mapUrl": "https://maps.app.goo.gl/HBtrAjqi7YrXmMb1A"
+  },
+  {
+    "id": "students-conference",
+    "special": true,
+    "showSignup": false,
+    "day": "friday",
+    "time": "",
+    "date": {
+      "pl": "6.11-8.11",
+      "en": "6.11-8.11"
+    },
+    "title": {
+      "pl": "Konferencja Studencka",
+      "en": "Students Conference"
+    },
+    "location": {
+      "pl": "Miejsce zostanie podane później",
+      "en": "Location to be announced"
+    }
   }
 ]

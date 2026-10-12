@@ -1955,11 +1955,9 @@ textarea {
 .events-rail {
   grid-column: 1 / -1;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
-
-  /* automatically gives 4, 3, 2 or 1 columns */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
   width: 100%;
   margin-top: 40px;
@@ -2053,9 +2051,6 @@ textarea {
 @media (max-width: 768px) {
 
   .events-rail {
-
-    grid-template-columns: 1fr;
-
     gap: 10px;
   }
 
@@ -2063,24 +2058,6 @@ textarea {
 
     padding:
       22px 0;
-  }
-}
-
-@media (min-width: 1200px) {
-  .events-rail {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 769px) {
-  .events-rail {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .events-rail {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -2779,4 +2756,43 @@ special event page
   .university-registration-logo {
     width: min(230px, 100%);
   }
+}
+
+/* Place the special-event badge on the right of the date row. */
+.rail-top {
+  gap: 16px;
+}
+
+.rail-meta,
+.event-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+.event-meta {
+  margin-left: auto;
+}
+
+.event-date-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.event-special-badge {
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+  margin-left: auto;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f47c2c;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
 }

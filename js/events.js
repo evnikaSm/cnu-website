@@ -11,10 +11,21 @@ async function loadEvents() {
         const response = await fetch("events.json");
         if (!response.ok) throw new Error("Could not load events.json");
         eventData = await response.json();
+
+        const conference = eventData.find(event => event.id === 'students-conference');
+        conference.registrationUrl = 'PASTE_REGISTRATION_URL_HERE';
+        conference.showSignup = true;
         renderEvents();
     } catch (error) {
         console.error("Events load error:", error);
     }
+}
+
+function createSpecialEventBadge(lang) {
+    const badge = document.createElement("span");
+    badge.className = "event-special-badge";
+    badge.textContent = lang === "en" ? "Special event" : "Specjalne";
+    return badge;
 }
 
 function renderEvents() {
@@ -48,6 +59,7 @@ function renderEvents() {
         const location = event.location?.[lang] || event.location?.en || "";
         const description = event.description?.[lang] || event.description?.en || "";
         const active = index === nextEventIndex;
+        const featured = event.id === "students-conference";
 
         if (timeline) {
             const timelineItem = document.createElement("div");
@@ -63,7 +75,7 @@ function renderEvents() {
             const heading = document.createElement("h4");
             heading.textContent = title;
             const details = document.createElement("p");
-            details.textContent = `${event.time} · ${location}`;
+            details.textContent = `${event.time ? `${event.time} · ` : ""}${location}`;
             content.append(dayLabel, heading, details);
             timelineItem.append(dot, content);
             timeline.append(timelineItem);
@@ -71,8 +83,8 @@ function renderEvents() {
 
         if (rail) {
             const card = document.createElement("div");
-            card.className = "rail-item";
-            card.addEventListener("click", () => goToForm());
+            card.className = `rail-item${featured ? " event-featured" : ""}`;
+            if (event.showSignup !== false) card.addEventListener("click", () => { window.location.href = event.registrationUrl || "formularz.html"; });
             const top = document.createElement("div");
             top.className = "rail-top";
             const cardDay = document.createElement("span");
@@ -81,7 +93,11 @@ function renderEvents() {
             const time = document.createElement("span");
             time.className = "rail-time";
             time.textContent = event.time;
-            top.append(cardDay, time);
+            const meta = document.createElement("div");
+            meta.className = "rail-meta";
+            if (event.time) meta.append(time);
+            if (event.special) meta.append(createSpecialEventBadge(lang));
+            top.append(cardDay, meta);
             const cardTitle = document.createElement("h3");
             cardTitle.textContent = title;
             const locationLine = document.createElement("p");
@@ -97,12 +113,12 @@ function renderEvents() {
                 locationLine.textContent = location;
             }
             card.append(top, cardTitle, locationLine);
-            rail.append(card);
+            featured ? rail.prepend(card) : rail.append(card);
         }
 
         if (homeCarousel) {
             const card = document.createElement("div");
-            card.className = "meeting-card event-slide";
+            card.className = `meeting-card event-slide${featured ? " event-featured" : ""}`;
             const cardTitle = document.createElement("div");
             cardTitle.className = "meeting-title";
             cardTitle.textContent = title;
@@ -117,20 +133,35 @@ function renderEvents() {
             const locationText = document.createElement("span");
             locationText.textContent = `📍 ${location}`;
             const timeText = document.createElement("span");
-            timeText.textContent = `⏰ ${dayName}${displayDate ? ` · ${displayDate}` : ""} · ${event.time}`;
-            info.append(locationText, timeText);
+            timeText.textContent = `⏰ ${dayName}${displayDate ? ` · ${displayDate}` : ""}${event.time ? ` · ${event.time}` : ""}`;
+            const dateRow = document.createElement("div");
+            dateRow.className = "event-date-row";
+            dateRow.append(timeText);
+            if (event.special) {
+                timeText.textContent = `⏰ ${dayName}${displayDate ? ` · ${displayDate}` : ""}`;
+                const meta = document.createElement("div");
+                meta.className = "event-meta";
+                if (event.time) {
+                    const time = document.createElement("span");
+                    time.textContent = event.time;
+                    meta.append(time);
+                }
+                meta.append(createSpecialEventBadge(lang));
+                dateRow.append(meta);
+            }
+            info.append(locationText, dateRow);
             card.append(info);
             if (event.showSignup !== false) {
-            const center = document.createElement("div");
-            center.className = "center";
-            const signup = document.createElement("button");
-            signup.className = "cta-btn";
-            signup.textContent = translations["form-button"] || (lang === "en" ? "Sign up" : "Zapisz się");
-            signup.addEventListener("click", () => { window.location.href = "formularz.html"; });
-            center.append(signup);
-            card.append(center);
+                const center = document.createElement("div");
+                center.className = "center";
+                const signup = document.createElement("button");
+                signup.className = "cta-btn";
+                signup.textContent = translations["form-button"] || (lang === "en" ? "Sign up" : "Zapisz się");
+                signup.addEventListener("click", () => { window.location.href = event.registrationUrl || "formularz.html"; });
+                center.append(signup);
+                card.append(center);
             }
-            homeCarousel.append(card);
+            featured ? homeCarousel.prepend(card) : homeCarousel.append(card);
         }
     });
 

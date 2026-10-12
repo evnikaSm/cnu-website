@@ -33,6 +33,13 @@ function applyTranslations() {
         }
     });
 
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(el => {
+        const key = el.dataset.i18nAriaLabel;
+        if (translations[key] !== undefined) {
+            el.setAttribute("aria-label", translations[key]);
+        }
+    });
+
     if (typeof renderVerse === "function") renderVerse();
     if (typeof renderEvents === "function") renderEvents();
 
@@ -40,6 +47,8 @@ function applyTranslations() {
     document.querySelectorAll("[data-lang]").forEach(btn => {
         btn.classList.toggle("active-lang", btn.dataset.lang === currentLang);
     });
+
+    document.dispatchEvent(new CustomEvent("languagechange", { detail: { lang: currentLang } }));
 }
 
 
