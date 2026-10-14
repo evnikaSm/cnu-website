@@ -13,7 +13,7 @@ async function loadEvents() {
         eventData = await response.json();
 
         const conference = eventData.find(event => event.id === 'students-conference');
-        conference.registrationUrl = 'PASTE_REGISTRATION_URL_HERE';
+        conference.registrationUrl = 'https://forms.gle/gh8eA5edVX7pZtB28';
         conference.showSignup = true;
         renderEvents();
     } catch (error) {
