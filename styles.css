@@ -2022,6 +2022,10 @@ textarea {
 
 /* title */
 
+.rail-item.event-featured > .center {
+  margin-top: 24px;
+}
+
 .rail-item h3 {
 
   margin:

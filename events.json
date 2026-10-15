@@ -1,32 +1,13 @@
 [
   {
-    "id": "meeting-5",
-    "special": true,
-    "day": "thursday",
-    "time": "18:00",
-    "date": {
-      "pl": "15.10",
-      "en": "15.10"
-    },
-    "title": {
-      "pl": "Pizza Connect",
-      "en": "Pizza Connect"
-    },
-    "location": {
-      "pl": "SGGW, Ikar",
-      "en": "SGGW, Ikar"
-    },
-    "mapUrl": "https://maps.app.goo.gl/HBtrAjqi7YrXmMb1A"
-  },
-  {
     "id": "students-conference",
     "special": true,
     "showSignup": false,
     "day": "friday",
     "time": "",
     "date": {
-      "pl": "6.11-8.11",
-      "en": "6.11-8.11"
+      "pl": "6-8.11",
+      "en": "6-8.11"
     },
     "title": {
       "pl": "Konferencja Studencka",

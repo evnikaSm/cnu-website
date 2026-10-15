@@ -113,6 +113,20 @@ function renderEvents() {
                 locationLine.textContent = location;
             }
             card.append(top, cardTitle, locationLine);
+            if (featured && event.showSignup !== false) {
+                const center = document.createElement("div");
+                center.className = "center";
+                const signup = document.createElement("button");
+                signup.type = "button";
+                signup.className = "cta-btn";
+                signup.textContent = translations["form-button"] || (lang === "en" ? "Sign up" : "Zapisz si\u0119");
+                signup.addEventListener("click", (click) => {
+                    click.stopPropagation();
+                    window.location.href = event.registrationUrl || "formularz.html";
+                });
+                center.append(signup);
+                card.append(center);
+            }
             featured ? rail.prepend(card) : rail.append(card);
         }
 
@@ -146,7 +160,6 @@ function renderEvents() {
                     time.textContent = event.time;
                     meta.append(time);
                 }
-                meta.append(createSpecialEventBadge(lang));
                 dateRow.append(meta);
             }
             info.append(locationText, dateRow);
