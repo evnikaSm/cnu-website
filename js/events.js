@@ -34,6 +34,14 @@ function renderEvents() {
     const lang = document.documentElement.lang === "en" ? "en" : "pl";
     const weekdays = eventWeekdays[lang];
     const dayIndex = (day) => canonicalWeekdays.indexOf((day || "").toLowerCase());
+    const weekOrder = (day) => {
+        const index = dayIndex(day);
+        return index < 0 ? 7 : (index + 6) % 7;
+    };
+    eventData.sort((a, b) => {
+        const conferenceOrder = Number(b.id === "students-conference") - Number(a.id === "students-conference");
+        return conferenceOrder || weekOrder(a.day) - weekOrder(b.day) || (a.time || "").localeCompare(b.time || "");
+    });
     const today = new Date().getDay();
     const nextEventIndex = eventData.reduce((best, event, index) => {
         const indexDay = dayIndex(event.day);
