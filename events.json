@@ -62,8 +62,24 @@
     },
     "mapUrl": "https://maps.app.goo.gl/gjcHLCyz2hsfAGKV6",
     "location": {
-      "pl": "Obok SGGW",
+      "pl": "Przy SGGW",
       "en": "Next to SGGW"
+    }
+  },
+  {
+    "id": "bible-stude-eng-sggw",
+    "special": false,
+    "showSignup": false,
+    "day": "Wednesday",
+    "time": "16:00",
+    "title": {
+      "pl": "Studiowanie Biblii w języku angielskim na SGGW",
+      "en": "Bible Study in English at SGGW"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Biblioteka+Główna+SGGW",
+    "location": {
+      "pl": "Biblioteka Główna SGGW, czytelnia C",
+      "en": "Main Library of SGGW, Room C"
     }
   }
 ]
