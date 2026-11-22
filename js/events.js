@@ -13,8 +13,10 @@ async function loadEvents() {
         eventData = await response.json();
 
         const conference = eventData.find(event => event.id === 'students-conference');
-        conference.registrationUrl = 'https://forms.gle/gh8eA5edVX7pZtB28';
-        conference.showSignup = true;
+        if (conference) {
+            conference.registrationUrl = 'https://forms.gle/gh8eA5edVX7pZtB28';
+            conference.showSignup = true;
+        }
         renderEvents();
     } catch (error) {
         console.error("Events load error:", error);

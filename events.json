@@ -1,24 +1,5 @@
 [
   {
-    "id": "students-conference",
-    "special": true,
-    "showSignup": false,
-    "day": "friday",
-    "time": "",
-    "date": {
-      "pl": "6-8.11",
-      "en": "6-8.11"
-    },
-    "title": {
-      "pl": "Konferencja Studencka",
-      "en": "Students Conference"
-    },
-    "location": {
-      "pl": "ŻYCIE BOGA-CZŁOWIEKA",
-      "en": "THE GOD-MAN LIVING"
-    }
-  },
-  {
     "id": "bible-study-uw",
     "special": false,
     "showSignup": false,
