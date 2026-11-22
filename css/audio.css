@@ -30,3 +30,6 @@
 .audio-language-selector button[aria-pressed="true"] { background: #0e3a5a; border-color: #0e3a5a; color: white; }
 .audio-language-selector button:focus-visible { outline: 3px solid #f47c2c; outline-offset: 2px; }
 .audio-language-group[hidden], .audio-card[hidden] { display: none; }
+.audio-status { color: #8b3e19 !important; font-size: .875rem; line-height: 1.5; margin-top: 10px !important; }
+.audio-status[hidden] { display: none; }
+.audio-placeholder audio[hidden] { display: none; }

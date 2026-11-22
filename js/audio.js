@@ -67,3 +67,28 @@ function setupAudioLanguages() {
     });
 }
 setupAudioLanguages();
+
+function setupAudioSources() {
+    document.querySelectorAll("audio source[src]").forEach(source => {
+        const audio = source.parentElement;
+        const status = document.createElement("p");
+        status.className = "audio-status";
+        status.setAttribute("role", "status");
+        audio.after(status);
+        let state = "";
+        function updateStatus() {
+            const en = document.documentElement.lang === "en";
+            const messages = {
+                error: en ? "Unable to play this recording. The file may be unavailable or the link may not support direct playback." : "Nie można odtworzyć nagrania. Plik może być niedostępny lub link nie obsługuje bezpośredniego odtwarzania."
+            };
+            status.textContent = messages[state] || "";
+            status.hidden = !state;
+        }
+        const setState = value => { state = value; updateStatus(); };
+        document.addEventListener("languagechange", updateStatus);
+        audio.addEventListener("error", () => setState("error"));
+        source.addEventListener("error", () => setState("error"));
+        audio.addEventListener("playing", () => setState(""));
+    });
+}
+setupAudioSources();

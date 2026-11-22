@@ -1,2 +1,6 @@
 js/variables.js
 notatki.txt
+# Keep local recordings out of Git; PDF conference materials remain publishable.
+/audio/**
+!/audio/**/
+!/audio/**/*.pdf

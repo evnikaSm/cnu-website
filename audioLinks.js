@@ -1,0 +1,33 @@
+// Paste a direct, publicly accessible SharePoint audio URL between the quotes for each file.
+// The keys identify recordings; keep them unchanged.
+window.audioLinks = {
+    "audio/Jesienna Konferencja Studencka 2023/Spotkanie 1 - Prawo Ducha życia - klucz do prowadzenia zwycięskiego życia .mp3": "https://fsz1-my.sharepoint.com/:u:/g/personal/piotr_strumien_com_pl/IQBVg_lNZoXTQpprSEVcOcpdATImxTqwnmyaJbM7KJ82ISU?e=SIDDks",
+    "audio/Jesienna Konferencja Studencka 2023/Spotkanie 2 - Chodzenie według zespolonego Ducha 1.mp3": "",
+    "audio/Jesienna Konferencja Studencka 2023/Spotkanie 3 - Ciało i duch.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Living the Kingdom Life by Living a Hidden Life/Meeting 1.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Living the Kingdom Life by Living a Hidden Life/Meeting 3 ENG-PL.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Living the Kingdom Life by Living a Hidden Life/Meeting 4 ENG_PL.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Living the Kingdom Life by Living a Hidden Life/Meetinig 2.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Prowadzić Życie Królestwa Dzięki Prowadzeniu Ukrytego Życia/Spotkanie 1 ENG-Pol.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Prowadzić Życie Królestwa Dzięki Prowadzeniu Ukrytego Życia/Spotkanie 2 ENG-PL.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Prowadzić Życie Królestwa Dzięki Prowadzeniu Ukrytego Życia/Spotkanie 3 PL.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Prowadzić Życie Królestwa Dzięki Prowadzeniu Ukrytego Życia/Spotkanie 4 ENG_PL.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Жить жизнью царства, живя скрытой жизнью/Сообщения 2 PL-RUS.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Жить жизнью царства, живя скрытой жизнью/Сообщения 3 Rus-PL.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Жить жизнью царства, живя скрытой жизнью/Сообщения 4 Rus.mp3": "",
+    "audio/Jesienna konferencja Studencka 2025/Жить жизнью царства, живя скрытой жизнью/Сообщения1 ENG-Rus.mp3": "",
+    "audio/Społeczność dla studentów i młodzieży 05.2025/Majowa konferencja w Warszawie 2025 - Spotkanie dla studentów i młodzieży ENG-POL.mp3": "",
+    "audio/Społeczność dla studentów i młodzieży 05.2025/Majowa konferencja w Warszawie 2025 - Spotkanie dla studentów i młodzieży ENG-RUS.mp3": "",
+    "audio/Społeczność dla studentów i młodzieży 05.2025/Special fellowship for students 2025 English .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/English/1. The Bible—the Word of God. .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/English/2. The Way to Receive Blessing From the Word. .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/English/3. The Functions of the Bible. .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/English/4. Living a Normal Christian Life .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Polski/1. Biblia Słowem Bożym .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Polski/2. Sposób na otrzymywanie błogosławieństwa ze Słowa .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Polski/3. Funkcje Bibii .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Polski/4. Prowadzić normalne życie chrześcijańskie, wypowiadając Słowo Chrystusa.mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Russian/1. Библия — Слово Божье .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Russian/2. Как получать благословение от Слова .mp3": "",
+    "audio/Wiosenna Konferencja Studencka 2025 - Biblia Słowem Bożym/Russian/3. Функции Библии .mp3": ""
+};
